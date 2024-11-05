@@ -1,0 +1,44 @@
+models:
+  Location:
+    name: string
+    address: string
+    city: string
+    postal_code: nullable string
+    country: string
+    relationships:
+      hasMany: Sector, Sector:&Department, Employee
+  Sector:
+    name: string
+    relationships:
+      hasMany: Department
+      belongsTo: Location
+  Department:
+    name: string
+    relationships:
+      belongsTo: Sector
+  Employee:
+    name: string
+    email: string unique
+    company: string default('Giza Cable Industries')
+    job_title: string
+    class: enum:"White Collars","Blue Collars"
+    national_id: string
+    employee_no: string
+    report_to: id
+    relationships:
+      belongsTo: Location, Sector, Department
+# seeders: Location, Sector, Department, Employee
+# controllers:
+#   Post:
+#     index:
+#       query: all
+#       render: post.index with:posts
+
+#     store:
+#       validate: title, content
+#       save: post
+#       send: ReviewNotification to:post.author with:post
+#       dispatch: SyncMedia with:post
+#       fire: NewPost with:post
+#       flash: post.title
+#       redirect: post.index
