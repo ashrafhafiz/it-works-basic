@@ -59,6 +59,6 @@ class Employee extends Model
 
     public function reportTo(): BelongsTo
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(ReportTo::class);
     }
 }

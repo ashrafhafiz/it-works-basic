@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -33,9 +34,9 @@ class Location extends Model
         'id' => 'integer',
     ];
 
-    public function sectors(): HasMany
+    public function sectors(): BelongsToMany
     {
-        return $this->hasMany(Sector::class);
+        return $this->belongsToMany(Sector::class, 'location_sector', 'location_id', 'sector_id');
     }
 
     public function departments(): HasManyThrough

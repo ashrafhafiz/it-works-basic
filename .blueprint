@@ -3,20 +3,17 @@ created:
     - database/factories/SectorFactory.php
     - database/factories/DepartmentFactory.php
     - database/factories/EmployeeFactory.php
-    - database/migrations/2024_11_05_131719_create_locations_table.php
-    - database/migrations/2024_11_05_131720_create_sectors_table.php
-    - database/migrations/2024_11_05_131721_create_departments_table.php
-    - database/migrations/2024_11_05_131722_create_employees_table.php
+    - database/migrations/2024_11_05_181024_create_locations_table.php
+    - database/migrations/2024_11_05_181025_create_sectors_table.php
+    - database/migrations/2024_11_05_181026_create_departments_table.php
+    - database/migrations/2024_11_05_181027_create_employees_table.php
+    - database/migrations/2024_11_05_181028_create_location_sector_table.php
     - app/Models/Location.php
     - app/Models/Sector.php
     - app/Models/Department.php
     - app/Models/Employee.php
-    - database/seeders/LocationSeeder.php
-    - database/seeders/SectorSeeder.php
-    - database/seeders/DepartmentSeeder.php
-    - database/seeders/EmployeeSeeder.php
 models:
     Location: { name: string, address: string, city: string, postal_code: 'nullable string', country: string, relationships: { hasMany: 'Sector, Sector:&Department, Employee' } }
-    Sector: { name: string, relationships: { hasMany: Department, belongsTo: Location } }
+    Sector: { name: string, relationships: { hasMany: Department, belongsToMany: Location } }
     Department: { name: string, relationships: { belongsTo: Sector } }
     Employee: { name: string, email: 'string unique', company: "string default('Giza Cable Industries')", job_title: string, class: 'enum:"White Collars","Blue Collars"', national_id: string, employee_no: string, report_to: id, relationships: { belongsTo: 'Location, Sector, Department' } }

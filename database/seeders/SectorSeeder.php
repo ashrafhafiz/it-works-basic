@@ -14,10 +14,12 @@ class SectorSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
-            'Head Office' => ['Business Excellence', 'Commercial', 'Finance & Legal', 'Supply Chain'],
-            'LV Factory' => ['Business Excellence',  'Commercial', 'Finance & Legal', 'Supply Chain', 'Operations'],
-            'MV/HV Factory' => ['Business Excellence', 'Commercial', 'Operations']
+        $sectors = [
+            ['name' => 'Business Excellence'],
+            ['name' => 'Commercial'],
+            ['name' => 'Finance & Legal'],
+            ['name' => 'Operations'],
+            ['name' => 'Supply Chain'],
         ];
 
         // Use the following instead for mysql
@@ -30,14 +32,9 @@ class SectorSeeder extends Seeder
         DB::statement('PRAGMA foreign_keys = OFF;');
         DB::table('sectors')->truncate();
 
-        foreach ($data as $location => $sectors) {
-            $location_id = Location::where('name', $location)->get()->first()->id;
-            foreach ($sectors as $sector) {
-                Sector::create([
-                    'location_id' => $location_id,
-                    'name' => $sector,
-                ]);
-            }
+        foreach ($sectors as $sector) {
+
+            Sector::create($sector);
         }
 
         // Use the following instead for mysql

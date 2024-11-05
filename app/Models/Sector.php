@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Sector extends Model
@@ -18,7 +18,6 @@ class Sector extends Model
      */
     protected $fillable = [
         'name',
-        'location_id',
     ];
 
     /**
@@ -28,7 +27,6 @@ class Sector extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'location_id' => 'integer',
     ];
 
     public function departments(): HasMany
@@ -36,8 +34,8 @@ class Sector extends Model
         return $this->hasMany(Department::class);
     }
 
-    public function location(): BelongsTo
+    public function locations(): BelongsToMany
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsToMany(Location::class, 'location_sector', 'sector_id', 'location_id');
     }
 }

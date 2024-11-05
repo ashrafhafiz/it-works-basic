@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Location;
 use App\Models\Sector;
 
 class SectorFactory extends Factory
@@ -23,7 +22,6 @@ class SectorFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'location_id' => Location::factory(),
         ];
     }
 }

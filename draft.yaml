@@ -11,7 +11,7 @@ models:
     name: string
     relationships:
       hasMany: Department
-      belongsTo: Location
+      belongsToMany: Location
   Department:
     name: string
     relationships:
