@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Department;
+use App\Models\Employee;
+use App\Models\Location;
+use App\Models\Sector;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,17 +17,19 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name_ar')->nullable();
+            $table->string('name_en');
             $table->string('email')->unique();
-            $table->string('company');
+            $table->enum('status', ["active", "inactive", "terminated"]);
+            $table->string('company')->default('Giza Cable Industries');
             $table->string('job_title');
-            $table->enum('class', ["White Collars","Blue Collars"]);
+            $table->enum('class', ["White Collars", "Blue Collars"]);
             $table->string('national_id');
             $table->string('employee_no');
-            $table->foreignId('report_to');
-            $table->foreignId('location_id');
-            $table->foreignId('sector_id');
-            $table->foreignId('department_id');
+            $table->foreignIdFor(Employee::class, 'report_to')->nullable();
+            $table->foreignIdFor(Location::class);
+            $table->foreignIdFor(Sector::class);
+            $table->foreignIdFor(Department::class);
             $table->timestamps();
         });
     }

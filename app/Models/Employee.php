@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model
 {
@@ -57,8 +58,20 @@ class Employee extends Model
         return $this->belongsTo(Department::class);
     }
 
-    public function reportTo(): BelongsTo
+    // Get the supervisor/manager
+    public function manager(): BelongsTo
     {
-        return $this->belongsTo(ReportTo::class);
+        return $this->belongsTo(Employee::class, 'reports_to');
+    }
+
+    // Get direct reports (subordinates)
+    public function directReports(): HasMany
+    {
+        return $this->hasMany(Employee::class, 'reports_to');
+    }
+
+    public function mobiles(): HasMany
+    {
+        return $this->hasMany(Mobile::class);
     }
 }
