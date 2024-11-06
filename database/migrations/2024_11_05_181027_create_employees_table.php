@@ -17,19 +17,19 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar')->nullable();
-            $table->string('name_en');
-            $table->string('email')->unique();
-            $table->enum('status', ["active", "inactive", "terminated"]);
+            $table->string('name_ar')->unique();
+            $table->string('name_en')->nullable();
+            $table->string('email')->nullable();
+            $table->enum('status', ["active", "inactive", "terminated"])->default('active');
             $table->string('company')->default('Giza Cable Industries');
             $table->string('job_title');
-            $table->enum('class', ["White Collars", "Blue Collars"]);
+            $table->enum('class', ["White Collars", "Blue Collars"])->default('White Collars');
             $table->string('national_id');
             $table->string('employee_no');
             $table->foreignIdFor(Employee::class, 'report_to')->nullable();
             $table->foreignIdFor(Location::class);
             $table->foreignIdFor(Sector::class);
-            $table->foreignIdFor(Department::class);
+            $table->foreignIdFor(Department::class)->nullable();
             $table->timestamps();
         });
     }

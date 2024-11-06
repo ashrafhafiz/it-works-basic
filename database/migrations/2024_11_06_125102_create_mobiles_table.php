@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('mobiles', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Employee::class);
-            $table->string('mobile_no');
-            $table->string('rate_plan');
-            $table->integer('bouquet_value');
+            $table->string('mobile_no')->nullable();
+            $table->string('rate_plan')->nullable();
+            $table->integer('bouquet_value')->nullable();
             $table->timestamps();
         });
     }

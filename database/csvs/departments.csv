@@ -1,26 +1,31 @@
-﻿Sector,Department
+﻿sector,department
+Business Excellence,Chief Business Excellence Officer
 Business Excellence,Administration
 Business Excellence,Digital Transformation
 Business Excellence,HSE
 Business Excellence,Human Resources
 Business Excellence,Information Technology
 Business Excellence,Quality Assurance
+Commercial,Chief Commercial Officer
 Commercial,Lighting Business Unit
 Commercial,Local Sales
 Commercial,Marketing & Busines Development
-Commercial,Order Fulfillment 
+Commercial,Order Fulfillment
 Commercial,Sales Operation
+Finance & Legal,Chief Financial Officer
 Finance & Legal,Accounting
 Finance & Legal,Legal & Governments
 Finance & Legal,Treasury
+Operations,Chief Operations Officer
+Operations,Management
 Operations,Maintenance
-Operations,Operations
-Operations,Technical 
+Operations,Technical
 Operations,Warehouse
 Operations,Security
 Operations,Planning
 Operations,Production
 Operations,Fleet Maintenance and Equipment Operations
+Supply Chain,Supply Chain Director
 Supply Chain,Logistics
 Supply Chain,MRO Procurement
 Supply Chain,RM Procurement

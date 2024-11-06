@@ -33,8 +33,8 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->truncate();
 
         foreach ($records as $record) {
-            $sector_id = Sector::where('name', $record['Sector'])->get()->first()->id;
-            $department_name = $record['Department'];
+            $sector_id = Sector::where('name', $record['sector'])->get()->first()->id;
+            $department_name = $record['department'];
             Department::create([
                 'sector_id' => $sector_id,
                 'name' => $department_name

@@ -23,7 +23,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LocationSeeder::class,
             SectorSeeder::class,
-            DepartmentSeeder::class
+            LocationSectorSeeder::class,
+            DepartmentSeeder::class,
+            EmployeeSeeder::class,
+            MobileSeeder::class,
+            ManufacturerSeeder::class,
+            DeviceTypeSeeder::class,
         ]);
     }
 }
